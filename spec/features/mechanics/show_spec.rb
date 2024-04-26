@@ -21,14 +21,14 @@ RSpec.describe "Mechanic Show Page", type: :feature do
 
   describe "when I visit a mechanic show page" do
     it "sees their name, years of experience, and names of all rides they are working on" do
-      visit "/mechanics/#{mechanic1.id}"
+      visit "/mechanics/#{@mechanic1.id}"
 
       expect(page).to have_content("Mechanic Name: #{@mechanic1.name}")
       expect(page).to have_content("Years Experience: #{@mechanic1.years_experience}")
       expect(page).to_not have_content("Mechanic Name: #{@mechanic2.name}")
       expect(page).to_not have_content("Years Experience: #{@mechanic2.years_experience}")
 
-      within "#mechanic-rides" do
+      within ".mechanic-rides" do
         expect(page).to have_content("Rides Working On:")
         expect(page).to have_content("#{@scrambler.name}")
         expect(page).to have_content("#{@jaws.name}")
